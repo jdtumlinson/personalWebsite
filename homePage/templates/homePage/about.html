@@ -2,6 +2,23 @@
 {% load static %}
 
 {% block body %}
+
+    <style>
+        @font-face {
+            font-family: 'Roboto';
+            src: url("{% static 'fonts/Roboto-Regular.ttf' %}") format('truetype');
+        }
+
+        @font-face {
+            font-family: "RobotoLightItialic";
+            src: url("{% static 'fonts/Roboto-LightItalic.ttf' %}");
+        }
+
+        @font-face {
+            font-family: "RobotoBold";
+            src: url("{% static 'fonts/Roboto-Bold.ttf' %}");
+        }
+    </style>    
     
     <link rel="stylesheet" href="{% static 'homePage/css/pages.css' %}" type="text/css">
 

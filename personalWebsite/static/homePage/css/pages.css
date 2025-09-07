@@ -1,18 +1,3 @@
-@font-face {
-    font-family: 'Roboto';
-    src: url("{% static 'fonts/Roboto-Regular.ttf' %}") format('truetype');
-}
-
-@font-face {
-    font-family: "RobotoLightItialic";
-    src: url("{% static 'fonts/Roboto-LightItalic.ttf' %}");
-}
-
-@font-face {
-    font-family: "RobotoBold";
-    src: url("{% static 'fonts/Roboto-Bold.ttf' %}");
-}
-
 .container {
     display: flex;
     justify-content: space-between;

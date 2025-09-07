@@ -1,13 +1,3 @@
-@font-face {
-    font-family: 'Roboto';
-    src: url("{% static 'fonts/Roboto-Regular.ttf' %}") format('truetype');
-}
-
-@font-face {
-    font-family: "RobotoLightItialic";
-    src: url("{% static 'fonts/Roboto-LightItalic.ttf' %}");
-}
-
 html,
 body {
     background-image: linear-gradient(to bottom right, #1a2038, #101c29);
