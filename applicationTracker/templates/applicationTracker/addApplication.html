@@ -1,0 +1,89 @@
+{% extends "applicationTracker/base.html" %}
+
+{% load static %}
+
+{% block body %}
+    <link rel="stylesheet" href="{% static 'applicationTracker/css/addApplication.css' %}" type="text/css">
+    <title> Add Application </title>
+
+    <div class="addWrapper">
+        <div class="addApp">
+            <div class="prompt">Enter Application Details</div>
+            <form method="POST">
+                {% csrf_token %}
+                <div>
+                    <label>{{ form.company.label }}</label>
+                    {{ form.company }}
+                </div>
+                <div id="suggestions" class="autocomplete-items"></div>
+                
+                <div>
+                    <label>{{ form.title.label }}</label>
+                    {{ form.title }}
+                </div>
+
+                <div>
+                    <label>{{ form.applicationStatus.label }}</label>
+                    {{ form.applicationStatus }}
+                </div>
+
+                <div>
+                    <label>{{ form.dateApplied.label }}</label>
+                    {{ form.dateApplied }}
+                </div>
+
+                <div>
+                    <label>{{ form.link.label }}</label>
+                    {{ form.link }}
+                </div>
+
+                <div>
+                    {{ form.domain }}
+                </div>
+
+                <input type="submit" class="submitButton">
+                <a href="{% url 'applicationTracker' %}" class="backButton">Back</a>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const input = document.querySelector("input[name='company']");
+            const domainInput = document.querySelector("input[name='domain']");
+            const suggestionsDiv = document.getElementById("suggestions");
+
+            console.log('here')
+            if (!input || !domainInput || !suggestionsDiv) return;
+
+            input.addEventListener("input", async () => {
+                console.log('input changed', input.value)
+                const query = input.value;
+                if (!query) {
+                    suggestionsDiv.innerHTML = "";
+                    return;
+                }
+
+                const response = await fetch(`/applicationTracker/searchCompanies/?q=${query}`);
+                const companies = await response.json();
+
+                suggestionsDiv.innerHTML = "";
+                companies.forEach(company => {
+                    const div = document.createElement("div");
+                    div.textContent = company.name;
+
+                    div.classList.add("suggestionItem");
+
+                    div.addEventListener("click", () => {
+                        input.value = company.name;
+                        domainInput.value = company.domain;
+                        suggestionsDiv.innerHTML = ""; // clear suggestions
+                    });
+
+                    suggestionsDiv.appendChild(div);
+                });
+            });
+        });
+    </script>
+{% endblock %}
+

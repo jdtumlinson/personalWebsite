@@ -1,0 +1,103 @@
+.addWrapper {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    width: 100%;
+}
+
+.addApp {
+    border: 2px solid white;
+    background-image: linear-gradient(to bottom right,rgb(19, 23, 28), rgba(15, 20, 42, 0.797));  
+    padding: 20px;
+    margin-left: 25%;
+    margin-right: 25%;
+    border-radius: 10px;
+    text-align: center;   
+    height: 50%;
+    color: white;
+}
+
+.prompt {
+    font-size: 1.5rem;
+    color: white;
+}
+
+input {
+    background-color: rgba(255, 255, 255, 0);
+    height: 30px;
+    font-size: 1rem;
+    border: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    flex-wrap: nowrap;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+input:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.292);
+}
+
+.autocomplete-items {
+    color: white;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.088);
+    overflow: hidden;
+}
+
+.suggestionItem{
+    background-color: rgba(0, 0, 0, 0.088);
+}
+
+.suggestionItem:hover {
+    background-color: rgba(102, 102, 102, 0.235);
+    cursor: pointer;
+}
+
+.appStatusDrop {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 1rem;
+    color: #333;
+    min-width: 150px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.appStatusDrop:hover {
+    border-color: #888;
+}
+
+.appStatusDrop:focus {
+    outline: none;
+    border-color: #4a90e2;
+}
+
+.backButton,
+.submitButton {
+    border: 1px solid white;
+    border-radius: 8px;
+    color: white;
+    padding: 5px 5px 5px 5px;
+    background-color: rgba(0, 0, 0, 0.221);
+    font-size: 0.9rem;
+    text-decoration: none;
+    margin-bottom: 0px;
+}
+
+.submitButton:hover {
+    background-color: rgba(26, 181, 70, 0.464);
+    cursor: pointer;
+}
+
+.backButton:hover {
+    background-color: rgba(181, 26, 26, 0.464);
+    cursor: pointer;
+}

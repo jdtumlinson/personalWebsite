@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'RobotoMed';
+    src: url("{% static 'fonts/Roboto-MediumItalic.ttf' %}") format('truetype');
+}
+
+.image {
+    position: absolute;
+    left: calc(50% - 400px);
+    top: calc(50% - 400px + 50px);
+}
+
+.image img {
+    width: 800px;
+}
+
+.textWrapper {
+    position: relative;
+    height: 100%;
+}
+
+.name {
+    top: 23%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.job {
+    top: 83%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.name,
+.job {
+    font-size: 9rem;
+    font-family: "RobotoMed";
+    color: white;
+    position: absolute;
+}
+
+.image,
+.name,
+.job {
+    pointer-events: none;
+}

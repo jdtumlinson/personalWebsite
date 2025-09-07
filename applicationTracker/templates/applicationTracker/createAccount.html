@@ -1,0 +1,31 @@
+{% extends "applicationTracker/base.html" %}
+
+{% load static %}
+
+{% block body %}
+    <link rel="stylesheet" href="{% static 'applicationTracker/css/addApplication.css' %}" type="text/css">
+    <title>  Create Account </title>
+
+    <div class="addWrapper">
+        <div class="addApp">   
+            <div class="prompt">Create Account</div> 
+            <form method="POST">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Username" required/>
+                <input type="password" name="password" placeholder="Password" required/>
+                <input type="password" name="confirmPassword" placeholder="Confirm Password" required/>
+
+                <input type="submit" value="Login" class="submitButton"/> 
+            </form>
+
+            {% if error %}
+                <p> {{ error }} </p>
+            {% endif %}
+
+            <div>
+                Already have an account? 
+                <a href="{% url 'login' %}"> Click here to login. </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

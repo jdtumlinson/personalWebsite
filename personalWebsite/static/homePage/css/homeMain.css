@@ -1,0 +1,104 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url("{% static 'fonts/Roboto-Regular.ttf' %}") format('truetype');
+}
+
+@font-face {
+    font-family: "RobotoLightItialic";
+    src: url("{% static 'fonts/Roboto-LightItalic.ttf' %}");
+}
+
+html,
+body {
+    background-image: linear-gradient(to bottom right, #1a2038, #101c29);
+    color: black;
+    font-family: "Roboto";
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-image: linear-gradient(to right, white 10%, antiquewhite);
+    background-size: cover;
+    z-index: 1000;
+}
+
+.logo {
+    width: 100;
+    height: 100;
+}
+
+.links {
+    display: flex;
+    gap: 50px;
+}
+
+.link {
+    color: rgb(27, 34, 62);
+    margin-right: 10px;
+    transition: color 0.3s;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+.link:hover {
+    color: rgb(169, 146, 78); /* LinkedIn blue, or whatever you like */
+}
+
+.socials {
+    display: flex;
+    gap: 25px;
+    margin-right: 25px;
+}
+
+a i {
+    color: rgb(27, 34, 62);
+    margin-right: 10px;
+    transition: color 0.3s;
+}
+
+a i.linkedin:hover {
+    color: #0077b5;
+}
+
+a i.github:hover {
+    color: #08872B;
+}
+
+.buffer {
+    margin-top: 100px;
+}
+
+.footer {
+    border-top: 2px solid white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgb(12, 24, 55);
+    color: white;
+    padding: 10px 20px;
+    text-align: right;
+    display: flex;
+    gap: 15px;
+    justify-content: right;
+}
+
+.email {
+    text-align: right;
+    color: white;
+    font-size: 0.7rem;
+    
+}
+
+.location {
+    text-align: right;
+    color: white;
+    font-size: 0.7rem;
+    margin-right: 50;
+}

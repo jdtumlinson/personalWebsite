@@ -1,0 +1,49 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'homePage/css/homeMain.css' %}" type="text/css">
+    <link rel="icon" href="{% static 'homePage/images/favicon.ico' %}" type="image/x-icon">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+</head>
+
+<!DOCTYPE html>
+<html>
+    <header class="header">
+        <div class="logoWrapper">
+            <a href="{% url "homePage" %}">
+                <img src="{% static 'homePage/images/logo.jpg' %}" class="logo">
+            </a>
+
+        </div>
+        <div class="links">
+            <a href="{% url 'about' %}" class="link">About</a>
+            <a href="{% url 'projects' %}" class="link">Projects</a>
+            <a href="{% url 'applicationTracker' %}" class="link">Application Tracker</a>
+        </div>
+        <div class="socials">
+            <a href="https://www.linkedin.com/in/joshuatumlinson/" target="_blank">
+                <i class="fab fa-linkedin fa-3x linkedin"></i>
+            </a>
+
+            <a href="https://github.com/jdtumlinson" target="_blank">
+                <i class="fab fa-github fa-3x github"></i>
+            </a>
+        </div>
+    </header>
+
+    {% block body %}
+
+    {% endblock %}
+
+
+    <footer class="footer">
+        <div class="email">
+            jdtumlinson@gmail.com
+        </div>
+        <div class="location">
+            Portland, Oregon
+        </div>
+    </footer>
+</html>

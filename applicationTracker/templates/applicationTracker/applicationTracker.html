@@ -1,0 +1,130 @@
+{% extends "applicationTracker/base.html" %}
+{% load static %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'applicationTracker/css/applicationTracker.css'%}" type="text/css">
+<title> Application Tracker </title>
+
+<div class="toolBar">
+    <div class="filters">
+        <div>Filters:</div>
+        <button class="sort-btn" data-field="company">Company</button>
+        <button class="sort-btn" data-field="title">Title</button>
+        <button class="sort-btn" data-field="dateApplied">Date Applied</button>
+        <button class="sort-btn" data-field="applicationStatus">Status</button>
+    </div>
+    <div class="newApp">
+        <div>New Application:</div>
+        <a href="{% url 'addApplication' %}" class="create-btn">
+            <i class="fa-solid fa-plus addApp"></i>
+        </a>
+    </div>
+</div>
+
+<div class="buffer"/>
+
+<div class="applications">
+    {% if not form_list %}
+    <div class="noAppsHolder">    
+        <div class="noApps">
+            Looks like you don't have any applications. Add a new one to start tracking!
+        </div>
+    </div>
+    {% else %}
+        {% for form in form_list %}
+            <form method="POST" action="{% url 'updateApplication' form.appInstance.id %}">
+                {% csrf_token %}
+                <div class="application">
+                    <div class="app-left">
+                        <img src="https://cdn.brandfetch.io/{{ form.appform.initial.domain }}?c=1idcJMH79P9Ec7yWgdQ" alt="Logo by Brandfetch" class="logoCircle"/>
+                        
+                        {{ form.appform.company }}
+                        <div id="suggestions-{{ forloop.counter }}" class="autocomplete-items"></div>
+                        
+                        {{ form.appform.title }}
+                        {{ form.appform.applicationStatus }}
+                        {{ form.appform.dateApplied }}
+                        {{ form.appform.domain }}
+
+                        {% if form.appInstance.link %}
+                            <a href="{{ form.appInstance.link }}" target="_blank">
+                                <i class="fa-solid fa-up-right-from-square visitLink"></i>
+                            </a>
+                        {% else %}
+                            <i class="fa-solid fa-up-right-from-square disabled-icon"></i>
+                        {% endif %}
+                        
+                        {{ form.appform.link }}
+
+                    </div>
+                    <div class="app-right">
+                        <input type="submit" value="Update" class="update">
+                        <a href="{% url 'deleteApplication' form.appInstance.id %}" class="delete-btn">
+                            <i class="fa-solid fa-trash trashIcon"></i>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        {% endfor %}
+    {% endif %}
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // Loop through all forms
+    document.querySelectorAll("form").forEach((form, index) => {
+        const input = form.querySelector("input[name='company']");
+        const domainInput = form.querySelector("input[name='domain']");
+        const suggestionsDiv = form.querySelector(`#suggestions-${index + 1}`);
+
+        if (!input || !domainInput || !suggestionsDiv) return;
+
+        input.addEventListener("input", async () => {
+            const query = input.value;
+            if (!query) {
+                suggestionsDiv.innerHTML = "";
+                return;
+            }
+
+            const response = await fetch(`/applicationTracker/searchCompanies/?q=${query}`);
+            const companies = await response.json();
+
+            suggestionsDiv.innerHTML = "";
+            companies.forEach(company => {
+                const div = document.createElement("div");
+                div.textContent = company.name;
+
+                div.classList.add("suggestionItem");
+
+                div.addEventListener("click", () => {
+                    input.value = company.name;
+                    domainInput.value = company.domain;
+                    suggestionsDiv.innerHTML = ""; // clear suggestions
+                });
+
+                suggestionsDiv.appendChild(div);
+            });
+        });
+    });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll(".sort-btn");
+    let currentSort = {};
+
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            const field = button.dataset.field;
+            let order = currentSort[field] === "asc" ? "desc" : "asc";
+            currentSort[field] = order;
+
+            const url = new URL(window.location);
+            url.searchParams.set("sort", field);
+            url.searchParams.set("order", order);
+            window.location = url.toString();
+        });
+    });
+});
+</script>
+
+{% endblock %}

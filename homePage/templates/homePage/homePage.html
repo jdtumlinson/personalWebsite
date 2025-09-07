@@ -1,0 +1,20 @@
+{% extends "homePage/homeBasis.html" %}
+{% load static %}
+
+{% block body %}
+    <link rel="stylesheet" href="{% static 'homePage/css/home.css' %}" type="text/css">
+    
+    <div class="image">
+        <img src="{% static 'homePage/images/home.png' %}">
+    </div>
+
+    <div class="textWrapper">
+        <div class="name">
+            Joshua Tumlinson
+        </div>
+        <div class="job">
+            Software Developer
+        </div>
+    </div>
+
+{% endblock %}

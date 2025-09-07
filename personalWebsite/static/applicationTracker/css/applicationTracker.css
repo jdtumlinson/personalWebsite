@@ -1,0 +1,196 @@
+.toolBar {
+    position: fixed;
+    top: calc(85px + 10px);
+    left: 0;
+    width: calc(100% - 45px);
+    height: 35px;
+    margin: 0 10px;
+    padding: 10px 10px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.245);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;      
+    column-gap: 2%; 
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.sort-btn,
+.addApp {
+    border: 1px solid white;
+    border-radius: 8px;
+    color: white;
+    padding: 5px 5px 5px 5px;
+    background-color: rgba(0, 0, 0, 0.221);
+    font-size: 0.9rem;
+}
+
+.sort-btn:hover {
+    background-color: rgba(0, 0, 0, 0.488);
+    cursor: pointer;
+}
+
+.addApp:hover {
+    background-color: rgba(26, 181, 70, 0.464);
+    cursor: pointer;
+}
+
+.newApp {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.noAppsHolder {
+    display: flex;
+    justify-content: center;
+}
+
+.noApps {
+    font-size: 2rem;
+    color: white;
+}
+
+.applications {
+    position: fixed;
+    top: calc(95px + 10px + 60px);
+    left: 0;
+    width: 100%;
+    height: calc(100vh - (95px + 10px + 60px));
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.application {
+    display: flex;
+    column-gap: 15px;
+    align-items: center;
+    justify-content: space-between;
+    column-width: auto;
+}
+
+form {
+    border: 2px solid rgb(0, 0, 0);
+    padding: 0.25%;
+    margin-bottom: 15px;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 8px;
+    color: white;
+    background-image: linear-gradient(to right,rgb(19, 23, 28), rgba(15, 20, 42, 0.797));  
+}
+
+input {
+    background-color: rgba(255, 255, 255, 0);
+    height: 25%;
+    font-size: 1rem;
+    color: white;
+    border: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    flex-wrap: nowrap;
+}
+
+input[name="link"] {
+    width: 25%;
+}
+
+input:hover {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.292);
+}
+
+.appStatusDrop {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 1rem;
+    color: #333;
+    min-width: 150px;
+}
+
+.appStatusDrop:hover {
+    border-color: #888;
+}
+
+.appStatusDrop:focus {
+    outline: none;
+    border-color: #4a90e2;
+}
+
+.logoCircle {
+    width: 5%;
+    height: 5%;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: rgb(0, 0, 0);
+}
+
+.autocomplete-items {
+    color: white;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.088);
+    overflow: hidden;
+}
+
+.suggestionItem{
+    background-color: rgba(0, 0, 0, 0.088);
+}
+
+.suggestionItem:hover {
+    background-color: rgba(102, 102, 102, 0.235);
+    cursor: pointer;
+}
+
+.update {
+    border: 1px solid white;
+    border-radius: 5px;
+    width: 80%;
+    font-size: 1rem;
+    background-color: rgba(201, 201, 201, 0.561);
+}
+
+.update:hover {
+    background-color: rgba(205, 205, 205, 0.644);
+    cursor: pointer;
+}
+
+.trashIcon {
+    color: white;
+}
+
+.trashIcon:hover {
+    color:rgb(220, 0, 0);
+}
+
+.visitLink {
+    color: white;
+}
+
+.visitLink:hover {
+    color: rgb(176, 176, 176);
+}
+
+.disabled-icon {
+    color: gray;
+}
+
+.app-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-left: 15px;
+}
+
+.app-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-right: 15px;
+}
